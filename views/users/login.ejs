@@ -1,0 +1,22 @@
+<% layout("/layouts/head.ejs") -%>
+
+<div class="col-6 offset-3">
+    <form class="needs-validation" novalidate method="POST" action="/login">
+        <div class="">
+            <label for="Username" class="form-label mt-3">Username</label>
+            <input required class="form-control" text id="Username" name="username" placeholder="Username">
+            <div class="invalid-feedback">Username is empty</div>
+        </div>
+        <!-- <div class="">
+            <label for="Email" class="form-label">Email</label>
+            <input required class="form-control" text id="Email" name="Email" placeholder="Email" type="email">
+            <div class="invalid-feedback">Email is empty</div>
+        </div> -->
+        <div class="">
+            <label for="Password" class="form-label">Password</label>
+            <input required class="form-control" text id="Password" name="password" placeholder="Password" type="password">
+            <div class="invalid-feedback">Password is empty</div>
+        </div>
+        <button class="offset-5 btn btn-primary mt-3 mb-3">login</button>
+    </form>
+</div>

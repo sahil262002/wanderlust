@@ -1,0 +1,125 @@
+<% layout("/layouts/head.ejs") -%>
+    <!-- <body>
+    
+    <h2><%= data.title %></h2>
+    <p><%= data.description %></p>
+    <p> &#8377; <%= data.price.toLocaleString("en-IN")%></p>
+    <p><%= data.location %></p>
+    <p><%= data.country %></p>
+    <a href="/listings/<%=data._id%>/edit">
+        <button>edit</button>
+    </a>
+
+    <form method="post" action="/listings/<%= data._id %>?_method=DELETE" onclick="return confirm('Are you sure you want to delete this listing?')"> 
+        <button>Delete</button>
+    </form>
+</body> -->
+
+    <div class="d-flex justify-content-center align-content-center">
+        <div class=" mb-3 mt-5 " style="width: 35rem;">
+            <h3 class="card-title mb-3">
+                <%= data.title %>
+            </h3>
+            <img src="<%= data.image.url %>" class="card-img-top w-100" alt="...">
+            <div class="card-body ">
+
+
+                <h6 class="card-text ms-3">
+                    <%= data.price %>
+                </h6>
+                <p class="card-text ms-3">
+                    <%= data.description %>
+                </p>
+                <p class="card-text ms-3">
+                    <%= data.location %>
+                </p>
+
+                <p class="card-text ms-3">
+                    <%= data.country%>
+                </p>
+
+                <%if(currUser && currUser._id.equals(data.owner._id)){ %>
+                    <span style="display: inline-block;">
+                        <a href="/listings/<%=data._id%>/edit" class="btn btn-dark ms-3 mb-3"
+                            style="width: 69.63px;">edit</a>
+                        <form method="post" action="/listings/<%= data._id %>?_method=DELETE"
+                            onclick="return confirm('Are you sure you want to delete this listing?')">
+                            <button class="btn btn-danger ms-3">Delete</button>
+                        </form>
+                    </span>
+                    <%}%>
+                        <p class="card-text ms-3 mt-3">listed by :-&nbsp;<i>
+                                <%=data.owner.username%>
+                            </i></p>
+
+
+                        <div>
+                            <hr>
+                            <h4>leave a review</h4>
+
+                            <form class="needs-validation" novalidate method="post"
+                                action="/listings/<%=data._id%>/review">
+                                <!-- <div>
+                                    <label for="rating" class="form-label ms-3">rate</label>
+                                    <input class="form-range" type="range" min="1" max="5" name="rating" id="rating">
+                                </div> -->
+                                <div>
+                                    <label for="rating" class="form-label ">Rating</label>
+                                    <fieldset class="starability-basic"name="rating" id="rating">
+                                        <!-- <label for="rating" class="form-label ms-3">rate</label>
+                                        <legend>Rating:</legend> -->
+                                        <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked aria-label="No rating." />
+                                        <input type="radio" id="first-rate1" name="rating" value="1" />
+                                        <label for="first-rate1" title="Terrible">1 star</label>
+                                        <input type="radio" id="first-rate2" name="rating" value="2" />
+                                        <label for="first-rate2" title="Not good">2 stars</label>
+                                        <input type="radio" id="first-rate3" name="rating" value="3" />
+                                        <label for="first-rate3" title="Average">3 stars</label>
+                                        <input type="radio" id="first-rate4" name="rating" value="4" />
+                                        <label for="first-rate4" title="Very good">4 stars</label>
+                                        <input type="radio" id="first-rate5" name="rating" value="5" />
+                                        <label for="first-rate5" title="Amazing">5 stars</label>
+                                    </fieldset>
+                                </div>
+                                <div>
+                                    <label for="comment" class="form-label ms-3">comment</label>
+                                    <textarea required class="form-control" name="comment" id="comment" cols="30"
+                                        rows="2"></textarea>
+                                    <div class="invalid-feedback">comment is empty</div>
+                                </div>
+                                <div>
+                                    <button class="btn btn-dark ms-3 mt-2" type="submit">
+                                        submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="review">
+                            <% for (let dat of data.reviews) { %>
+                                <hr>
+                                <% if (dat.author) { %>
+                                    <p><i class="fa-solid fa-user"></i>&nbsp;<%= dat.author.username %>
+                                    </p>
+                                    <% } else { %>
+                                    <p><i class="fa-solid fa-user"></i>&nbsp;Anonymous</p>
+                                <% } %>
+                                <p>
+                                    <p class="starability-result" data-rating=<%= dat.rating %>>
+                                        rated :<%= dat.rating %> stars
+                                    </p>
+                                </p>
+                                <p>
+                                    <%= dat.comment %>
+                                </p>
+
+                                <form method="post"
+                                    action="/listings/<%=data._id%>/review/<%=dat._id%>?_method=DELETE">
+                                    <button class="btn btn-danger">delete</button>
+                                </form>
+                                    <!-- <form method="post" action="/listings/<%data._id%>/review/<%dat._id%>?_method=put"><button class="btn btn-danger">edit</button></form> -->
+                                <% } %>
+                        </div>
+
+            </div>
+        </div>
+    </div>

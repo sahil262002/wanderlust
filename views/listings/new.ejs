@@ -1,0 +1,75 @@
+<% layout("/layouts/head.ejs") -%>
+<body>
+    <div class="container d-flex align-items-center flex-column">
+        <form class="needs-validation" novalidate method="POST" action="/listings" enctype="multipart/form-data" >
+        
+            <div class="border  d-flex flex-column align-items-center mt-3">
+                <div class="mb-4 col-lg-10  col-md-10 mt-5  col-sm-10">
+                    <label for="title" class="form-label">title</label>
+                    <input required class="form-control" text id="title" name="title" placeholder="title">
+                    <div class="invalid-feedback">title is empty</div>
+                </div>
+                <div class="row d-flex justify-content-evenly">
+                    <div class="mb-4 col-lg-4  col-md-10 col-xs-4 col-sm-10">
+                        <label for="price" class="form-label">price</label>
+                        <input required class="form-control" type="text" name="price" placeholder="price" id="price">
+                        <div class="invalid-feedback">price is invalid</div>
+                    </div>
+                    <div class="mb-4 col-lg-5 col-sm-10  col-md-10">
+                        <label for="country" class="form-label">country</label>
+                        <input required class="form-control" type="text" name="country" placeholder="country" id="country">
+                        <div class="invalid-feedback">country name is invalid</div>
+                    </div>
+                </div>
+                
+                <div class="mb-4 col-lg-10 col-sm-10  col-md-10 ">
+                    <label for="location" class="form-label">location</label>
+                    <input required class="form-control" type="text" name="location" placeholder="location" id="location">
+                    <div class="invalid-feedback">location name is invalid</div>
+                </div>
+                <!-- <div class="mb-4 col-lg-10  col-sm-10 col-md-10 ">
+                    <label for="img" class="form-label">image </label>
+                    <input  class="form-control" type="text" name="image" placeholder="image" id="img">
+                    <div class="invalid-feedback">image is invalid</div>    
+                </div> -->
+                <div class="mb-4 col-lg-10  col-sm-10 col-md-10 ">
+                    <label for="img" class="form-label">image </label>
+                    <input  class="form-control" type="file" name="image" id="img">
+                    <div class="invalid-feedback">image is invalid</div>    
+                </div>
+                <div class="mb-4 col-lg-10 col-sm-10  col-md-10 ">
+                    <label for="des" class="form-label">description</label>
+                    <textarea required class="form-control" name="description" id="des" cols="30" rows="4" placeholder="write description"></textarea>
+                    <div class="invalid-feedback">description is invalid</div>
+                    <div class="btn d-flex justify-content-center mt-3">
+                        <button type="submit"class=" mb-4 col-lg-4   col-md-6 btn btn-dark">submit</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+
+  
+</body>
+<script>
+      (() => {
+        'use strict'
+      
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+      
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+      
+            form.classList.add('was-validated')
+          }, false)
+        })
+      })()
+</script>
+

@@ -1,0 +1,75 @@
+<!-- <% layout("/layouts/head.ejs") -%>
+<body>
+    
+    <form method="post" action="/listings/<%=data._id%>?_method=PUT">
+        
+        <label for="title">title</label>
+        <input type="text" id="title" name="title"  value="<%=data.title%>">
+        <br>
+        <br>
+        <label for="des">description</label>
+        <textarea name="des" id="des" cols="30" rows="3" ><%=data.description%></textarea>
+        <br>
+        <br>
+        <label for="price">price</label>
+        <input type="text" name="price"  id="price" value="<%=data.price%>">
+        <br>
+        <br>
+        <label for="location">location</label>
+        <input type="text" name="location" id="location" value="<%=data.location%>">
+        <br>
+        <br>
+        <label for="country">country</label>
+        <input type="text" name="country"  id="country" value="<%=data.country%>">
+        <br> 
+        <br>
+        <label for="img">image </label>
+        <input type="itext" name="img"  id="img" value="<%=data.image%>">
+        <br> 
+        <br> <button type="submit">submit</button>
+    </form>
+
+</body> -->
+<% layout("/layouts/head.ejs") -%>
+<body>
+    <form method="post" action="/listings/<%=data._id%>?_method=PUT" enctype="multipart/form-data">
+        <div class="container d-flex align-items-center flex-column">
+            <div class="border  d-flex flex-column align-items-center mt-3">
+                <div class="mb-4 col-lg-10  col-md-10 mt-5  col-sm-10">
+                    <label for="title" class="form-label">title</label>
+                    <input class="form-control" text id="title" name="title" placeholder="title" value="<%=data.title%>">
+                </div>
+                <div class="row d-flex justify-content-evenly">
+                    <div class="mb-4 col-lg-4  col-md-10 col-xs-10 col-sm-10">
+                        <label for="price" class="form-label">price</label>
+                        <input class="form-control" type="text" name="price" placeholder="price" id="price" value="<%=data.price%>">
+                    </div>
+                    <div class="mb-4 col-lg-5 col-sm-10  col-md-10">
+                        <label for="country" class="form-label">country</label>
+                        <input class="form-control" type="text" name="country" placeholder="country" id="country"value="<%=data.country%>">
+                    </div>
+                </div>
+                
+                <div class="mb-4 col-lg-10 col-sm-10  col-md-10 ">
+                    <label for="location" class="form-label">location</label>
+                    <input  class="form-control" type="text" name="location" placeholder="location" id="location" value="<%=data.location%>">
+                </div>
+                <div class="mb-4 col-lg-10  col-sm-10 col-md-10 ">
+                    <label for="img" class="form-label">image </label>
+                    <input  class="form-control" type="file" name="image" placeholder="image" id="img" >    
+                </div>
+                <div class="mb-4 col-lg-10 col-sm-10  col-md-10 ">
+                    <label for="des" class="form-label">description</label>
+                    <textarea class="form-control" name="des" id="des" cols="30" rows="4" placeholder="write description"><%=data.description%></textarea>
+                    <div class="btn d-flex justify-content-center mt-3">
+                        <button type="submit"class=" mb-4 col-lg-4   col-md-6 btn btn-dark">submit</button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+       
+    </form>
+</body>

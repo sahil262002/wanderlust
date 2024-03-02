@@ -1,0 +1,22 @@
+<% layout("/layouts/head.ejs") -%>
+
+<body>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <% for (dat of data) { %>
+                <div class="col-lg-4 col-md-6 col-sm-10">
+                    <div class="card  mb-3" style="width: 20rem; height: 22rem;;">
+                        <a id="anchor"href="/listings/<%= dat._id %>">
+                            <img src="<%=dat.image.url%>" class="card-img-top" alt="..." >
+                            <div class="card-body">
+                                <p class="card-text ms-3"><b><%= dat.title %></b> <br> <%= dat.price%>/night</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+<!-- In this code, each card is wrapped in a <div class="col-lg-4 col-md-6 col-sm-12">, which specifies that in large viewports (lg), each card should take up 4 columns, in medium viewports (md), each card should take up 6 columns, and in small viewports (sm), each card should take up the full width (12 columns). -->
