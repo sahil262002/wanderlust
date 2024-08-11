@@ -8,7 +8,10 @@
                 <div class="col-lg-4 col-md-6 col-sm-10">
                     <div class="card  mb-3" style="width: 20rem; height: 22rem;;">
                         <a id="anchor"href="/listings/<%= dat._id %>">
-                            <img src="<%=dat.image.url%>" class="card-img-top" alt="..." >
+                            <div>
+                                <img src="<%=dat.image.url%>" class="card-img-top" alt="..." >
+                            </div>
+                            
                             <div class="card-body">
                                 <p class="card-text ms-3"><b><%= dat.title %></b> <br> <%= dat.price%>/night</p>
                             </div>
